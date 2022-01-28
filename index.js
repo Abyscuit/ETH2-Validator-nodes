@@ -55,7 +55,7 @@ function getTransactions() {
         "&startblock=0" +
         "&endblock=99999999" +
         "&page=1" +
-        "&offset=200" +
+        "&offset=10000" +
         "&sort=asc" +
         `&apikey=${ETHERSCAN_API_KEY}`;
 
