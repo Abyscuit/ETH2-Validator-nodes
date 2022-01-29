@@ -21,6 +21,7 @@ const ABI_JSON = JSON.parse(ABI);
 const inter = new ethers.utils.Interface(ABI_JSON);
 
 var ETHERSCAN_API_KEY = "";
+var INFURA_ETH2_API_KEY = "";
 const ETHERSCAN_SITE = "api.etherscan.io";
 const ETHERSCAN_ENDPOINT = "/api"
 var TRANSACTIONS = "";
@@ -40,9 +41,8 @@ function loadConfig() {
         if (values.length > 1) {
             var keyName = removeQuotes(values[0]);
             var value = removeQuotes(values[1]);
-            if (keyName == "ETHERSCAN_API_KEY") {
-                ETHERSCAN_API_KEY = value;
-            }
+            if (keyName == "ETHERSCAN_API_KEY") { ETHERSCAN_API_KEY = value; }
+            else if (keyName == "INFURA_ETH2_API_KEY") { INFURA_ETH2_API_KEY = value; }
         }
     }
 
