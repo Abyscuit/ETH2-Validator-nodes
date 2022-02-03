@@ -7,9 +7,7 @@ const port = 3000;
 
 search.loadConfig();
 
-app.use(express.static(__dirname + '/Website/manifest.json'));
-app.use(express.static(__dirname + '/Website/assets/'));
-
+app.use(express.static(__dirname + '/Website/assets'));
 app.get(['/', '/index', '/index.html', '/search'], (req, res) => {
     var filePath = __dirname + "/Website/index.html";
     let address = req.query.address;
@@ -20,10 +18,15 @@ app.get(['/', '/index', '/index.html', '/search'], (req, res) => {
                     return console.log(err);
                 }
                 var $ = cheerio.load(data);
-                $('div.results-container').append(`<h2>${address} - ${validators.length} ETH2 Validators</h2><hr>`);
                 for (let val of validators) {
-                    $('div.results-container').append(val.toHTML());
+                    $('div.row').append(val.toHTML());
                 }
+                if (validators.length == 0) {
+                    var html = `<div style="padding: 20px;"><h4 class="text-center">` +
+                        `${address} has 0 ETH2 Vaidators!` +
+                        `</h4></div>`;
+                    $('div.container').append(html)
+                };
 
                 res.set('Content-Type', 'text/html; charset=utf-8');
                 res.send($.html());

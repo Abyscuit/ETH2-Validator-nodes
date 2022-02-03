@@ -2,36 +2,43 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>ETH2 Validator Search</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        a,
-        a:visited {
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: blue;
-        }
-    </style>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/Footer-Basic.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <h2>Search for ETH2 Validator nodes</h2>
-    <div class="search-container">
-        <form method="get" action="">
-            <label for="address">Address</label>
-            <input type="search" style="width: 40%;" id="address" name="address" />
-            <input type="submit" value="Search" />
-        </form>
+    <header class="d-flex" style="padding: 20px;align-content: center;justify-content: center;">
+        <form class="d-flex" method="get" style="width: 50%;padding: 10px;max-height: 60px;align-content: center;"
+            target="_self"><input class="bg-dark form-control" type="search" autofocus="" name="address"
+                placeholder="address" required="" maxlength="42" minlength="42" autocomplete="on"><button
+                class="btn btn-primary d-xl-flex justify-content-xl-start" type="submit"><i
+                    class="fas fa-search"></i></button></form>
+    </header>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="w-100"></div>
+        </div>
     </div>
-    <div class="results-container">
-
-    </div>
+    <footer class="text-info bg-dark footer-basic" style="background: rgba(0,0,0,0);opacity: 1;">
+        <div class="social"><a href="https://www.linkedin.com/in/marcus-escobedo-286720217"><i
+                    class="fab fa-linkedin"></i></a><a href="https://github.com/abyscuit"><i
+                    class="fab fa-github"></i></a><a href="https://discordapp.com/users/222866066961989632"><i
+                    class="fab fa-discord"></i></a><a
+                href="https://etherscan.io/address/0xe4a555daf0c71abef7b2d725eefae41dead4d8dd"><i
+                    class="fab fa-ethereum"></i></a></div>
+        <p class="copyright">Abyscuit © 2022</p>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

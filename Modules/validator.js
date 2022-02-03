@@ -63,18 +63,20 @@ class validator {
         var date = this.convertTicksToDate(this.timestamp);
         var valURL = `https://beaconscan.com/validator/${this.pubkey}`; // URL for the validator info
         var txURL = `https://etherscan.io/tx/${this.hash}`; // URL for the transaction info
-        var html = `<div><h3>Validator #${this.index}</h3><ul class="val-${this.index}">`;
-        html += `<li><b>Date:</b> ${date}</li>`;
-        html += `<li><b>Validator Pubkey:</b> <a href="${valURL}">${this.pubkey}</a></li>`;
-        html += `<li><b>Deposit Transaction:</b> <a href="${txURL}">${this.hash}</a></li>`;
-        html += `<li><b>Balance:</b> ${this.balance} ETH</li>`;
-        html += `<li><b>Effective Balance:</b> ${this.effectiveBalance} ETH</li>`;
-        html += `<li><b>Total Income:</b> ${this.rewardBalace} ETH</li>`;
-        html += `<li><b>Status:</b> ${this.status}</li>`;
-        html += `<li><b>Slashed:</b> ${this.slashed}</li>`;
-        html += `<li><b><i>Eligible for Activation on Epoch ${this.eligibleEpoch}</i></b></li>`;
-        html += `<li><b><i>Activated on Epoch ${this.activationEpoch}</i></b></li>`;
-        html += '</ul></div>';
+        var html = `<div class="col-md-4" style="padding: 30px 10px; overflow: hidden;"><h5 class="text-center">Validator #${this.index}</h5>`;
+        html += `<span><b>Date:</b> ${date}</span><br>`;
+        html += `<span><b>Validator Pubkey:</b><br>`;
+        html += `<span><a href="${valURL}">${this.pubkey}</a></span><br>`;
+        html += `<span><b>Deposit Transaction:</b></span><br>`
+        html += `<span><a href="${txURL}">${this.hash}</a></span><br>`;
+        html += `<span><b>Balance:</b> ${this.balance} ETH</span><br>`;
+        html += `<span><b>Effective Balance:</b> ${this.effectiveBalance} ETH</span><br>`;
+        html += `<span><b>Total Income:</b> ${this.rewardBalace} ETH</span><br>`;
+        html += `<span><b>Status:</b> ${this.status}</span><br>`;
+        html += `<span><b>Slashed:</b> ${this.slashed}</span><br>`;
+        html += `<span><b><i>Eligible for Activation on Epoch ${this.eligibleEpoch}</i></b></span><br>`;
+        html += `<span><b><i>Activated on Epoch ${this.activationEpoch}</i></b></span>`;
+        html += '</div>';
         return html;
     }
 }
