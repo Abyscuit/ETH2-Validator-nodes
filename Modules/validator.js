@@ -58,6 +58,25 @@ class validator {
         console.log(`Eligible for Activation on Epoch ${this.eligibleEpoch}`);
         console.log(`Activated on Epoch ${this.activationEpoch}`);
     }
+
+    toHTML() {
+        var date = this.convertTicksToDate(this.timestamp);
+        var valURL = `https://beaconscan.com/validator/${this.pubkey}`; // URL for the validator info
+        var txURL = `https://etherscan.io/tx/${this.hash}`; // URL for the transaction info
+        var html = `<div><h3>Validator #${this.index}</h3><ul class="val-${this.index}">`;
+        html += `<li><b>Date:</b> ${date}</li>`;
+        html += `<li><b>Validator Pubkey:</b> <a href="${valURL}">${this.pubkey}</a></li>`;
+        html += `<li><b>Deposit Transaction:</b> <a href="${txURL}">${this.hash}</a></li>`;
+        html += `<li><b>Balance:</b> ${this.balance} ETH</li>`;
+        html += `<li><b>Effective Balance:</b> ${this.effectiveBalance} ETH</li>`;
+        html += `<li><b>Total Income:</b> ${this.rewardBalace} ETH</li>`;
+        html += `<li><b>Status:</b> ${this.status}</li>`;
+        html += `<li><b>Slashed:</b> ${this.slashed}</li>`;
+        html += `<li><b><i>Eligible for Activation on Epoch ${this.eligibleEpoch}</i></b></li>`;
+        html += `<li><b><i>Activated on Epoch ${this.activationEpoch}</i></b></li>`;
+        html += '</ul></div>';
+        return html;
+    }
 }
 
 module.exports = validator;
