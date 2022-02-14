@@ -1,13 +1,18 @@
 const search = require('./Modules/search');
 var cheerio = require("cheerio");
+const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const express = require('express');
+const cors = require('cors');
 var app = express();
 const port = 3000;
 
 search.loadConfig();
 
+app.use(cors());
 app.use(express.static(__dirname + '/Website/assets'));
+
 app.get(['/', '/index', '/index.html', '/search'], (req, res) => {
     var filePath = __dirname + "/Website/index.html";
     let address = req.query.address;

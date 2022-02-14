@@ -3,7 +3,6 @@ const https = require('https');
 const fs = require('fs');
 var Web3 = require('web3');
 const ethers = require('ethers');
-const { Console } = require('console');
 const { setTimeout } = require('timers');
 var web3 = new Web3(Web3.givenProvider || 'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'); // -> web3.eth
 const utils = web3.utils;
@@ -47,6 +46,19 @@ function search(address, callback) {
     ETH2_VALIDATORS = new Array();
     console.log(`Searching ${address}`)
     getTransactions(address, callback);
+}
+
+function isValidAddress(address) {
+    if (utils.isHexStrict(address)) {
+        if (!utils.checkAddressChecksum(address)) {
+            console.log("Address not checksummed");
+            address = utils.toChecksumAddress(address);
+        }
+        if (utils.isAddress(address)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 async function getTransactions(address, callback) {
