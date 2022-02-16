@@ -43,6 +43,10 @@ function loadConfig() {
 }
 
 function search(address, callback) {
+    if (!isValidAddress(address)) {
+        callback(new Array(["Not valid"]));
+        return;
+    }
     ETH2_VALIDATORS = new Array();
     console.log(`Searching ${address}`)
     getTransactions(address, callback);

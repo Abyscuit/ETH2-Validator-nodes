@@ -23,15 +23,25 @@ app.get(['/', '/index', '/index.html', '/search'], (req, res) => {
                     return console.log(err);
                 }
                 var $ = cheerio.load(data);
-                for (let val of validators) {
-                    $('div.row').append(val.toHTML());
-                }
+                var html = `<div style="padding: 20px;"><h4 class="text-center">` +
+                    `${address} has 0 ETH2 Vaidators!` +
+                    `</h4></div>`;
                 if (validators.length == 0) {
-                    var html = `<div style="padding: 20px;"><h4 class="text-center">` +
-                        `${address} has 0 ETH2 Vaidators!` +
-                        `</h4></div>`;
                     $('div.container').append(html)
-                };
+                }
+                else {
+                    if (validators[0] == "Not valid") {
+                        html = `<div style="padding: 20px;"><h4 class="text-center">` +
+                            `${address} is not a valid ETH1 Address!` +
+                            `</h4></div>`;
+                        $('div.container').append(html)
+                    }
+                    else {
+                        for (let val of validators) {
+                            $('div.row').append(val.toHTML());
+                        }
+                    }
+                }
 
                 res.set('Content-Type', 'text/html; charset=utf-8');
                 res.send($.html());
