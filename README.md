@@ -1,6 +1,7 @@
 # ETH2-Validator-nodes
 View the ETH2 Validators linked on the Consensus Layer to an ETH1 address.<br>
-Try it out here: http://eth2validators.com
+The test website is currently under construction.<br>
+Try it out here: https://eth2validators.com
 
 # Installation
 Clone the repo:<br>
